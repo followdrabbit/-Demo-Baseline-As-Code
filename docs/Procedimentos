@@ -110,4 +110,40 @@ git add .
 git commit -m "chore: configure commitlint and husky"
 ```
 
-Essa versão revisada da documentação deve ser adequada para ambos os ambientes, Windows e Unix-like, e garantir que todos os usuários possam seguir as instruções sem enfrentar problemas de compatibilidade.
+## Atualizar o package.json
+
+Atualize as informações do projeto como: description, keywords, autgor, license e outros.
+
+### Exemplo de preenchimento do package.json
+
+```json
+{
+  "name": "-demo-baseline-as-code",
+  "version": "1.0.0",
+  "description": "A essência do projeto \"-Demo-Baseline-As-Code\" nasce da busca por um sistema eficiente que habilite a publicação de baselines de segurança de maneira simplificada, mantendo um alto padrão de qualidade. O objetivo central é estabelecer um processo automatizado que não só valide a aderência dos documentos ao padrão de Semantic Versioning (SemVer) mas também assegure que eles cumpram as regras pré-definidas para pull requests (PRs). Além disso, o projeto enfatiza a governança dos documentos de baseline, implementada através da geração de hashes e de uma página dedicada (\"control\") que consolida informações cruciais dos baselines, incluindo versões, datas de publicação e os hashes correspondentes.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "security",
+    "baseline",
+    "documentation",
+    "automated-publishing",
+    "semantic-versioning",
+    "governance"
+  ],
+  "author": "Raphael de Carvalho Florencio (Arquiteto de Segurança da Informação) <https://linkedin.com/in/raphaelflorencio>",
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^19.2.2",
+    "@commitlint/config-conventional": "^19.2.2",
+    "husky": "^9.0.11"
+  }
+}
+```

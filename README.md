@@ -75,9 +75,9 @@ Este sistema foi concebido para demonstrar que é possível criar um processo de
 1. **Configuração Inicial do Projeto:**
    - [X] Configurar o repositório no GitHub e definir as branch policies para bloquear commits diretos na main, exigindo PRs.
    - [X] Preparação do ambiente
-       - [ ] Inicializar o Node.Js que será utilizado para configurar o Commitlint e o Husky
-       - [ ] Configurar o package.json
-   - [ ] Adicionar o Commitlint para garantir que os commits sigam o padrão SemVer.
+       - [X] Inicializar o Node.Js que será utilizado para configurar o Commitlint e o Husky
+   - [X] Instalar e configurar o Commitlint e o Husky para garantir que os commits sigam o padrão SemVer.
+   - [X] Configurar o package.json com informações sobre o autor, Licença e outros.
 
 2. **Integração e Automação:**
    - [ ] Integrar o Dependabot para validação de componentes vulneráveis e abertura automática de PRs para correção.
