@@ -79,29 +79,40 @@ module.exports = {
 };
 ```
 
-### 4. Configure o Husky
+#### 4. **Configure o Husky (Manual Setup)**
 
-Inicialize o Husky no seu projeto com o seguinte comando:
+Desde a versão 8 do Husky, o processo de configuração mudou. Siga estes passos:
 
-```bash
-npx husky install
-```
+- Crie o diretório `.husky` na raiz do projeto:
+  
+  ```bash
+  mkdir -p .husky
+  ```
 
-Adicione um hook de `commit-msg` para validar as mensagens de commit:
+- Crie um arquivo chamado `commit-msg` dentro do diretório `.husky` com o seguinte conteúdo:
 
-```bash
-npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
-```
+  ```bash
+  #!/bin/sh
+  . "$(dirname "$0")/husky.sh"
 
-Inclua o script de preparação no seu `package.json` para configurar o Husky automaticamente após a instalação:
+  npx --no-install commitlint --edit "$1"
+  ```
 
-```json
-"scripts": {
-  "prepare": "husky install"
-}
-```
+- Tornar o arquivo `commit-msg` executável (em sistemas Unix-like):
 
-### 5. Faça um commit inicial
+  ```bash
+  chmod +x .husky/commit-msg
+  ```
+
+- Adicione ou atualize o script `prepare` em seu `package.json` para inicializar o Husky:
+
+  ```json
+  "scripts": {
+    "prepare": "husky install"
+  }
+  ```
+
+#### 5. **Faça um commit inicial**
 
 Depois de configurar tudo, é uma boa ideia fazer um commit inicial para testar se o Commitlint está funcionando conforme esperado. Adicione seus arquivos ao staging do Git e faça um commit:
 
