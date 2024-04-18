@@ -73,7 +73,10 @@ Este sistema foi concebido para demonstrar que é possível criar um processo de
 ## A FAZER
 
 1. **Configuração Inicial do Projeto:**
-   - [ ] Configurar o repositório no GitHub e definir as branch policies para bloquear commits diretos na main, exigindo PRs.
+   - [X] Configurar o repositório no GitHub e definir as branch policies para bloquear commits diretos na main, exigindo PRs.
+   - [X] Preparação do ambiente
+       - [ ] Inicializar o Node.Js que será utilizado para configurar o Commitlint e o Husky
+       - [ ] Configurar o package.json
    - [ ] Adicionar o Commitlint para garantir que os commits sigam o padrão SemVer.
 
 2. **Integração e Automação:**

@@ -1,0 +1,113 @@
+# Procedimentos
+
+Esta documentação contém os procedimentos utilizados para configurar este repositório no formato passo a passo.
+
+## Configurar a Proteção de Branch
+
+1. Vá ao seu repositório no GitHub.
+2. Clique em "Settings" na barra de navegação superior.
+3. No menu lateral, clique em "Branches" sob a seção "Code and automation".
+4. Em "Branch protection rules", clique em "Add branch protecction rule".
+5. No campo "Branch name pattern", digite main para aplicar a regra à branch principal.
+6. Marque as opções "Require  pull request before merging" e "Require approvals" que será exibida assim que você marcar a primeira. Isso exigirá revisões de PR antes de permitir a fusão na branch main.
+    - Você pode configurar opções adicionais aqui, como o número de revisores necessários, entre outros.
+7. Marque a opção "Do not allow bypassing the above settings" para aplicar essas regras também aos administradores do repositório.
+8. Clique em "Create" para salvar as regras.
+
+## Adicionar o Commitlint ao repositório
+
+Siga os passos abaixo para adicionar o Commitlint ao repositório e configura-lo afim de garantir que os commits sigam o padrão SemVer (Semantic Versioning):
+
+Vamos atualizar a documentação para incluir instruções específicas tanto para usuários de Linux quanto para usuários de Windows, garantindo que todos possam seguir as etapas sem problemas de compatibilidade. Abaixo, você encontrará a versão revisada:
+
+### 1. Inicializar o projeto Node.js
+
+Se você ainda não tem um `package.json` no seu repositório, você precisa inicializar seu projeto Node.js. Isso pode ser feito com o seguinte comando:
+
+```bash
+npm init -y
+```
+
+ou, se preferir usar o Yarn:
+
+```bash
+yarn init -y
+```
+
+Isso criará um `package.json` básico.
+
+### 2. Instale o Commitlint e o Husky
+
+Para sistemas baseados em Unix (Linux/macOS):
+
+```bash
+npm install --save-dev @commitlint/{cli,config-conventional} husky
+```
+
+ou, com o Yarn:
+
+```bash
+yarn add --dev @commitlint/{cli,config-conventional} husky
+```
+
+Para Windows, execute os comandos separadamente para cada pacote:
+
+```bash
+npm install --save-dev @commitlint/cli
+npm install --save-dev @commitlint/config-conventional
+npm install --save-dev husky
+```
+
+ou, com o Yarn para Windows:
+
+```bash
+yarn add --dev @commitlint/cli
+yarn add --dev @commitlint/config-conventional
+yarn add --dev husky
+```
+
+### 3. Configure o Commitlint
+
+Crie um arquivo na raiz do seu projeto chamado `commitlint.config.js` e adicione o seguinte conteúdo:
+
+```javascript
+module.exports = {
+  extends: ['@commitlint/config-conventional'],
+  rules: {
+    'subject-case': [2, 'always', ['lower-case']] // Opcional: regra para exigir descrição do commit em minúsculas
+  }
+};
+```
+
+### 4. Configure o Husky
+
+Inicialize o Husky no seu projeto com o seguinte comando:
+
+```bash
+npx husky install
+```
+
+Adicione um hook de `commit-msg` para validar as mensagens de commit:
+
+```bash
+npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
+```
+
+Inclua o script de preparação no seu `package.json` para configurar o Husky automaticamente após a instalação:
+
+```json
+"scripts": {
+  "prepare": "husky install"
+}
+```
+
+### 5. Faça um commit inicial
+
+Depois de configurar tudo, é uma boa ideia fazer um commit inicial para testar se o Commitlint está funcionando conforme esperado. Adicione seus arquivos ao staging do Git e faça um commit:
+
+```bash
+git add .
+git commit -m "chore: configure commitlint and husky"
+```
+
+Essa versão revisada da documentação deve ser adequada para ambos os ambientes, Windows e Unix-like, e garantir que todos os usuários possam seguir as instruções sem enfrentar problemas de compatibilidade.
