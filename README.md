@@ -79,6 +79,11 @@ Este sistema foi concebido para demonstrar que é possível criar um processo de
    - [X] Instalar e configurar o Commitlint e o Husky para garantir que os commits sigam o padrão SemVer.
    - [X] Configurar o package.json com informações sobre o autor, Licença e outros.
 
+2. **Instalação e configuração do Hugo**
+   - [ ] Integrar o Dependabot para validação de componentes vulneráveis e abertura automática de PRs para correção.
+
+
+
 2. **Integração e Automação:**
    - [ ] Integrar o Dependabot para validação de componentes vulneráveis e abertura automática de PRs para correção.
    - [ ] Definir regras no Danger para revisão automática das PRs.
